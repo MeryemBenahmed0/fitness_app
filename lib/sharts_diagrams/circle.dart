@@ -7,13 +7,14 @@ class CustomCircularProgress extends StatefulWidget {
   final double strokeWidth; // Stroke width for the circular progress
 
   const CustomCircularProgress({
-    Key? key,
+    super.key,
     required this.progressValue,
     required this.progressGradient,
     this.strokeWidth = 8.0,
-  }) : super(key: key);
+  });
 
   @override
+  // ignore: library_private_types_in_public_api
   _CustomCircularProgressState createState() => _CustomCircularProgressState();
 }
 
@@ -121,7 +122,7 @@ class _CircularProgressPainter extends CustomPainter {
     canvas.drawCircle(center, radius, backgroundPaint);
 
     // Draw progress arc
-    final double startAngle = -math.pi / 2;
+    const double startAngle = -math.pi / 2;
     final double sweepAngle = 2 * math.pi * progress;
     canvas.drawArc(
       Rect.fromCircle(center: center, radius: radius),

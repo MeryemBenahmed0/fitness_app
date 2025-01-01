@@ -6,9 +6,10 @@ class ProfileCard extends StatefulWidget {
   final UserProfile userProfile;
   final Box<UserProfile> box;
 
-  const ProfileCard({Key? key, required this.userProfile, required this.box}) : super(key: key);
+  const ProfileCard({super.key, required this.userProfile, required this.box});
 
   @override
+  // ignore: library_private_types_in_public_api
   _ProfileCardState createState() => _ProfileCardState();
 }
 
@@ -32,22 +33,22 @@ Widget build(BuildContext context) {
         // Welcome Message
         Text(
           'Welcome back, ${widget.userProfile.name}!',
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 22,
             fontWeight: FontWeight.bold,
             color: Color(0xFF050A1A)
           ),
         ),
-        SizedBox(height: 16),
-         Text(
+        const SizedBox(height: 16),
+         const Text(
           'Personal Details',
           style: TextStyle(
             fontSize: 15,
             fontWeight: FontWeight.normal,
-            color: const Color.fromARGB(255, 50, 48, 48),
+            color: Color.fromARGB(255, 50, 48, 48),
           ),
         ),
-         SizedBox(height: 8),
+         const SizedBox(height: 8),
 
         // Editable Profile Fields
         _buildEditableField(
@@ -58,7 +59,7 @@ Widget build(BuildContext context) {
           initialValue: widget.userProfile.name,
           onChanged: (value) => _updateProfile(name: value),
         ),
-        SizedBox(height: 16),
+        const SizedBox(height: 16),
         _buildEditableField(
           context,
           fieldKey: 'sex',
@@ -67,7 +68,7 @@ Widget build(BuildContext context) {
           initialValue: widget.userProfile.sex,
           onChanged: (value) => _updateProfile(sex: value),
         ),
-        SizedBox(height: 16),
+        const SizedBox(height: 16),
         _buildEditableField(
           context,
           fieldKey: 'age',
@@ -78,7 +79,7 @@ Widget build(BuildContext context) {
           onChanged: (value) =>
               _updateProfile(age: int.tryParse(value) ?? widget.userProfile.age),
         ),
-        SizedBox(height: 16),
+        const SizedBox(height: 16),
 
         // Height and Weight in the same row
         Row(
@@ -97,7 +98,7 @@ Widget build(BuildContext context) {
                     _updateProfile(height: double.tryParse(value) ?? widget.userProfile.height),
               ),
             ),
-            SizedBox(width: 16),  // Add space between the two fields
+            const SizedBox(width: 16),  // Add space between the two fields
             Expanded(
               child: _buildEditableField(
                 context,
@@ -138,8 +139,8 @@ Widget build(BuildContext context) {
       height: 60.0,
       child: Row(
         children: [
-          Icon(icon, color: Color.fromARGB(255, 111, 124, 132), size: 28),
-          SizedBox(width: 16),
+          Icon(icon, color: const Color.fromARGB(255, 111, 124, 132), size: 28),
+          const SizedBox(width: 16),
           Expanded(
             child: _editMode[fieldKey]!
                 ? TextField(
@@ -150,7 +151,7 @@ Widget build(BuildContext context) {
                       border: InputBorder.none,
                     ),
                     keyboardType: keyboardType,
-                    style: TextStyle(fontSize: 16),
+                    style: const TextStyle(fontSize: 16),
                     onChanged: onChanged,
                     onSubmitted: (value) {
                       // Exit edit mode when the user submits the text
@@ -161,13 +162,13 @@ Widget build(BuildContext context) {
                   )
                 : Text(
                     initialValue,
-                    style: TextStyle(fontSize: 16, color: Colors.black87),
+                    style: const TextStyle(fontSize: 16, color: Colors.black87),
                   ),
           ),
           IconButton(
             icon: Icon(
               _editMode[fieldKey]! ? Icons.check : Icons.edit,
-              color: Color.fromARGB(255, 91, 154, 205),
+              color: const Color.fromARGB(255, 91, 154, 205),
             ),
             onPressed: () {
               setState(() {

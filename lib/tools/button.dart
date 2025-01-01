@@ -11,7 +11,7 @@ class CustomButton extends StatelessWidget {
   final double height;
 
   const CustomButton({
-    Key? key,
+    super.key,
     required this.label,
     required this.onPressed,
     this.backgroundColor = const Color.fromARGB(255, 99, 142, 201), // Soft red as default button background
@@ -20,7 +20,7 @@ class CustomButton extends StatelessWidget {
     this.padding = 16.0,
     this.width = double.infinity,
     this.height = 50.0, // Default button height
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

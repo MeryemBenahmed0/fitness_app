@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:table_calendar/table_calendar.dart';
-import 'package:test_app/component/button.dart';
-import 'package:test_app/component/drop_down.dart';
-import 'package:test_app/component/text_feild.dart';
+import 'package:test_app/tools/button.dart';
+import 'package:test_app/tools/drop_down.dart';
+import 'package:test_app/tools/text_feild.dart';
 import 'package:test_app/models/goal.dart';
 
 class AddGoalScreen extends StatefulWidget {
+  const AddGoalScreen({super.key});
+
   @override
+  // ignore: library_private_types_in_public_api
   _AddGoalScreenState createState() => _AddGoalScreenState();
 }
 
@@ -36,8 +39,9 @@ class _AddGoalScreenState extends State<AddGoalScreen> {
       await goalBox.add(newGoal);
 
       // Show a confirmation snack bar
+      // ignore: use_build_context_synchronously
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Goal added successfully!')),
+        const SnackBar(content: Text('Goal added successfully!')),
       );
 
       // Optionally, you can clear the form to add another goal without leaving the screen
@@ -51,7 +55,7 @@ class _AddGoalScreenState extends State<AddGoalScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Add Goal')),
+      appBar: AppBar(title: const Text('Add Goal')),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
         child: Form(
@@ -89,11 +93,11 @@ class _AddGoalScreenState extends State<AddGoalScreen> {
               ),
 
               // Due Date Selection
-              Text(
+              const Text(
                 'Select Due Date',
                 style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
               ),
-              SizedBox(height: 8),
+              const SizedBox(height: 8),
               TableCalendar(
                 focusedDay: _dueDate,
                 selectedDayPredicate: (day) => isSameDay(_dueDate, day),
@@ -105,19 +109,19 @@ class _AddGoalScreenState extends State<AddGoalScreen> {
                 firstDay: DateTime.utc(2020, 01, 01),
                 lastDay: DateTime.utc(2100, 12, 31),
                 calendarFormat: CalendarFormat.month,
-                headerStyle: HeaderStyle(
+                headerStyle: const HeaderStyle(
                   formatButtonVisible: false,
                   titleCentered: true,
                   leftChevronIcon: Icon(Icons.arrow_left),
                   rightChevronIcon: Icon(Icons.arrow_right),
                 ),
               ),
-              SizedBox(height: 16.0),
+              const SizedBox(height: 16.0),
 
               // Priority Selection
               CustomDropdownField<String>(
                 label: 'Priority',
-                items: ['Low', 'Medium', 'High'],
+                items: const ['Low', 'Medium', 'High'],
                 value: _priority,
                 onChanged: (value) {
                   setState(() {
@@ -131,7 +135,7 @@ class _AddGoalScreenState extends State<AddGoalScreen> {
                   return null;
                 },
               ),
-              SizedBox(height: 16.0),
+              const SizedBox(height: 16.0),
 
               // Submit Button
               CustomButton(

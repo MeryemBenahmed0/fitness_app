@@ -5,7 +5,7 @@ import 'package:test_app/models/goal.dart';
 class GoalCard extends StatelessWidget {
   final Goal goal;
 
-  const GoalCard({Key? key, required this.goal}) : super(key: key);
+  const GoalCard({super.key, required this.goal});
 
   // Function to return color based on priority
   Color getPriorityColor(String priority) {
@@ -38,18 +38,18 @@ class GoalCard extends StatelessWidget {
             Container(
               width: 60,
               decoration: BoxDecoration(
-                color: Color.fromARGB(255, 74, 75, 77),
+                color: const Color.fromARGB(255, 74, 75, 77),
                 borderRadius: BorderRadius.circular(8.0),
                 boxShadow: [
                   BoxShadow(
                     color: Colors.white.withOpacity(0.6), // White shadow with opacity
                     blurRadius: 10.0, // Blur radius
-                    offset: Offset(0, 4), // Position of the shadow (vertical offset)
+                    offset: const Offset(0, 4), // Position of the shadow (vertical offset)
                   ),
                   BoxShadow(
                     color: const Color.fromARGB(255, 202, 206, 240).withOpacity(0.6), // White shadow with opacity
                     blurRadius: 10.0, // Blur radius
-                    offset: Offset(0, -5), // Position of the shadow (vertical offset)
+                    offset: const Offset(0, -5), // Position of the shadow (vertical offset)
                   ),
                 ],
               ),
@@ -59,7 +59,7 @@ class GoalCard extends StatelessWidget {
                 children: [
                   Text(
                     day,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
                       color: Color.fromARGB(255, 241, 240, 245),
@@ -67,7 +67,7 @@ class GoalCard extends StatelessWidget {
                   ),
                   Text(
                     month,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.w500,
                       color: Color.fromARGB(255, 241, 240, 245),
@@ -76,7 +76,7 @@ class GoalCard extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(width: 9), // Space between date and details
+            const SizedBox(width: 9), // Space between date and details
 
             // Card section for goal details
             Expanded(
@@ -87,7 +87,7 @@ class GoalCard extends StatelessWidget {
                 child: Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12.0),
-                    gradient: LinearGradient(
+                    gradient: const LinearGradient(
                       colors: [
                         Color.fromARGB(255, 221, 231, 243), // Gradient start color
                         Color.fromARGB(255, 221, 226, 244), // Gradient end color
@@ -99,7 +99,7 @@ class GoalCard extends StatelessWidget {
                       BoxShadow(
                         color: Colors.white.withOpacity(0.6), // White shadow with opacity
                         blurRadius: 10.0, // Blur radius
-                        offset: Offset(0, 4), // Position of the shadow (vertical offset)
+                        offset: const Offset(0, 4), // Position of the shadow (vertical offset)
                       ),
                     ],
                   ),
@@ -115,20 +115,20 @@ class GoalCard extends StatelessWidget {
                               // Title with bold styling
                               Text(
                                 goal.title,
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontSize: 18,
                                   color: Color.fromARGB(255, 50, 63, 100),
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
-                              SizedBox(height: 2), // Reduced space between title and description
+                              const SizedBox(height: 2), // Reduced space between title and description
 
                               // Description with grey color
                               Text(
                                 goal.description,
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontSize: 14,
-                                  color: const Color.fromARGB(255, 91, 92, 96),
+                                  color: Color.fromARGB(255, 91, 92, 96),
                                 ),
                               ),
                             ],
@@ -148,7 +148,7 @@ class GoalCard extends StatelessWidget {
                             child: Center(
                               child: Text(
                                 goal.priority[0].toUpperCase(), // Display the first letter of priority
-                                style: TextStyle(
+                                style: const TextStyle(
                                   color: Colors.white,
                                   fontSize: 18,
                                   fontWeight: FontWeight.bold,

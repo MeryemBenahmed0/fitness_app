@@ -11,7 +11,7 @@ class CustomTextField extends StatelessWidget {
   final double verticalSpacing; // Added for space between fields
 
   const CustomTextField({
-    Key? key,
+    super.key,
     required this.label,
     this.keyboardType = TextInputType.text,
     this.onSaved,
@@ -19,7 +19,7 @@ class CustomTextField extends StatelessWidget {
     this.icon,
     this.backgroundColor = const Color.fromARGB(255, 213, 222, 239), // Light grayish lavender from palette
     this.verticalSpacing = 16.0, // Default space between fields
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -30,22 +30,22 @@ class CustomTextField extends StatelessWidget {
         children: [
           Text(
             label,
-            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
           ),
-          SizedBox(height: 8), // Add some spacing between the label and the text field
+          const SizedBox(height: 8), // Add some spacing between the label and the text field
           TextFormField(
             decoration: InputDecoration(
               border: InputBorder.none,
               filled: true,
               fillColor: backgroundColor,
-              prefixIcon: icon != null ? Icon(icon, color: Color.fromARGB(255, 57, 88, 134)) : null, // Muted blue for icon
-              contentPadding: EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+              prefixIcon: icon != null ? Icon(icon, color: const Color.fromARGB(255, 57, 88, 134)) : null, // Muted blue for icon
+              contentPadding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
               enabledBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.transparent),
+                borderSide: const BorderSide(color: Colors.transparent),
                 borderRadius: BorderRadius.circular(15.0),
               ),
               focusedBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.transparent),
+                borderSide: const BorderSide(color: Colors.transparent),
                 borderRadius: BorderRadius.circular(30.0),
               ),
             ),

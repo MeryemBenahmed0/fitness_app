@@ -9,14 +9,14 @@ class CustomDropdownField<T> extends StatelessWidget {
   final Color? backgroundColor;
 
   const CustomDropdownField({
-    Key? key,
+    super.key,
     required this.label,
     required this.items,
     this.onChanged,
     this.value,
     this.validator,
     this.backgroundColor = const Color.fromARGB(255, 213, 222, 239), // Light grayish lavender from palette
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -25,21 +25,21 @@ class CustomDropdownField<T> extends StatelessWidget {
       children: [
         Text(
           label,
-          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+          style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
         ),
-        SizedBox(height: 8), // Spacing between label and dropdown
+        const SizedBox(height: 8), // Spacing between label and dropdown
         DropdownButtonFormField<T>(
           decoration: InputDecoration(
             border: InputBorder.none,
             filled: true,
             fillColor: backgroundColor, // Light grayish lavender background
-            contentPadding: EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+            contentPadding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
             enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.transparent),
+              borderSide: const BorderSide(color: Colors.transparent),
               borderRadius: BorderRadius.circular(30.0),
             ),
             focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.transparent),
+              borderSide: const BorderSide(color: Colors.transparent),
               borderRadius: BorderRadius.circular(30.0),
             ),
           ),
@@ -48,7 +48,7 @@ class CustomDropdownField<T> extends StatelessWidget {
                     value: item,
                     child: Text(
                       item.toString(),
-                      style: TextStyle(color: Color(0xFF5b5f97)), // Muted blue for text
+                      style: const TextStyle(color: Color(0xFF5b5f97)), // Muted blue for text
                     ),
                   ))
               .toList(),

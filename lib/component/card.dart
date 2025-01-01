@@ -7,7 +7,7 @@ class CustomCard extends StatelessWidget {
   final double sigmaX;
   final double sigmaY;
 
-  CustomCard({
+  const CustomCard({super.key, 
     required this.child,
     this.borderRadius = 16.0,
     this.sigmaX = 5.0,

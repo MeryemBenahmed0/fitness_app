@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
-import 'package:test_app/component/button.dart';
+import 'package:test_app/tools/button.dart';
 import 'package:test_app/component/card.dart';
-import 'package:test_app/component/drop_down.dart';
-import 'package:test_app/component/text_feild.dart';
+import 'package:test_app/tools/drop_down.dart';
+import 'package:test_app/tools/text_feild.dart';
 import 'package:test_app/models/user_profile.dart';
 
 class UserProfileSetupScreen extends StatefulWidget {
+  const UserProfileSetupScreen({super.key});
+
   @override
+  // ignore: library_private_types_in_public_api
   _UserProfileSetupScreenState createState() => _UserProfileSetupScreenState();
 }
 
@@ -23,20 +26,20 @@ class _UserProfileSetupScreenState extends State<UserProfileSetupScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           'Set Your Profile',
           style: TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.bold,
-            color: const Color.fromARGB(255, 241, 243, 247),
+            color: Color.fromARGB(255, 241, 243, 247),
           ),
         ),
         centerTitle: true,
-        backgroundColor:Color.fromARGB(255, 50, 63, 100),
+        backgroundColor:const Color.fromARGB(255, 50, 63, 100),
         elevation: 0,
       ),
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage('assets/images/1226dda4d6a576dd3ce82fbdbe537838.jpg'), // Path to your image
             fit: BoxFit.cover, // Ensures the image covers the entire screen
@@ -46,16 +49,16 @@ class _UserProfileSetupScreenState extends State<UserProfileSetupScreen> {
           padding: const EdgeInsets.all(16.0),
           child: Column(
             children: [
-              Align(
+              const Align(
                 alignment: Alignment.center,
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 16.0),
+                  padding: EdgeInsets.symmetric(vertical: 16.0),
                   child: Text(
                     'Fill this form so you can set up your profile',
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.w400,
-                      color: const Color.fromARGB(255, 75, 84, 100),
+                      color: Color.fromARGB(255, 75, 84, 100),
                     ),
                     textAlign: TextAlign.center,
                   ),
@@ -80,7 +83,7 @@ class _UserProfileSetupScreenState extends State<UserProfileSetupScreen> {
                             ),
                             CustomDropdownField<String>(
                               label: 'Sex',
-                              items: ['Male', 'Female'],
+                              items: const ['Male', 'Female'],
                               onChanged: (value) => sex = value,
                               value: sex,
                             ),
@@ -102,10 +105,10 @@ class _UserProfileSetupScreenState extends State<UserProfileSetupScreen> {
                               onSaved: (value) => weight = double.tryParse(value ?? ''),
                               icon: Icons.fitness_center,
                             ),
-                            SizedBox(height: 20),
+                            const SizedBox(height: 20),
                             CustomButton(
                               label: 'Next',
-                              backgroundColor: Color.fromARGB(255, 50, 63, 100),
+                              backgroundColor: const Color.fromARGB(255, 50, 63, 100),
                               onPressed: () async {
                                 if (_formKey.currentState?.validate() ?? false) {
                                   _formKey.currentState?.save();
@@ -121,6 +124,7 @@ class _UserProfileSetupScreenState extends State<UserProfileSetupScreen> {
                                   await box.put('userProfile', userProfile);
 
                                   // Navigate to the MainScreen with BottomNavigationBar
+                                  // ignore: use_build_context_synchronously
                                   Navigator.pushReplacementNamed(context, '/main');
                                 }
                               },

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:test_app/component/goal_card.dart';
 import 'package:test_app/component/profile_card.dart';
@@ -8,17 +7,19 @@ import 'package:test_app/models/user_profile.dart';
 import 'package:test_app/component/bmi_calculator.dart'; // Import BMI calculator component
 
 class ProfileScreen extends StatelessWidget {
+  const ProfileScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 239, 238, 243),
+      backgroundColor: const Color.fromARGB(255, 239, 238, 243),
       body: ValueListenableBuilder<Box<UserProfile>>(
         valueListenable: Hive.box<UserProfile>('userProfileBox').listenable(),
         builder: (context, box, _) {
           var userProfile = box.get('userProfile');
 
           if (userProfile == null) {
-            return Center(child: Text('No profile data found.'));
+            return const Center(child: Text('No profile data found.'));
           }
 
           return SingleChildScrollView(
@@ -33,7 +34,7 @@ class ProfileScreen extends StatelessWidget {
                       clipper: CurvedTransitionClipper(),
                       child: Container(
                         height: 530,
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                           image: DecorationImage(
                             image: AssetImage('assets/images/Untitled design.png'), // Set your image here
                             fit: BoxFit.cover, // Adjust image to fit the container
@@ -48,8 +49,8 @@ class ProfileScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 1.0),
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 1.0),
                   child: Text(
                     'Your Fitness Goals',
                     style: TextStyle(
@@ -64,8 +65,8 @@ class ProfileScreen extends StatelessWidget {
                   builder: (context, goalsBox, _) {
                     var goals = goalsBox.values.toList();
                     if (goals.isEmpty) {
-                      return Center(child: Padding(
-                        padding: const EdgeInsets.all(16.0),
+                      return const Center(child: Padding(
+                        padding: EdgeInsets.all(16.0),
                         child: Text('No goals added.'),
                       ));
                     }
@@ -73,7 +74,7 @@ class ProfileScreen extends StatelessWidget {
                     return ListView.builder(
                       itemCount: goals.length,
                       shrinkWrap: true, // Make the ListView occupy only the required height
-                      physics: NeverScrollableScrollPhysics(), // Disable inner scroll
+                      physics: const NeverScrollableScrollPhysics(), // Disable inner scroll
                       itemBuilder: (context, index) {
                         return Dismissible(
                           key: Key(goals[index].id.toString()),
@@ -81,15 +82,15 @@ class ProfileScreen extends StatelessWidget {
                           onDismissed: (direction) {
                             goalsBox.deleteAt(index);
                             ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(content: Text('Goal deleted')),
+                              const SnackBar(content: Text('Goal deleted')),
                             );
                           },
                           background: Container(
                             color: Colors.red,
-                            child: Align(
+                            child: const Align(
                               alignment: Alignment.centerLeft,
                               child: Padding(
-                                padding: const EdgeInsets.all(16.0),
+                                padding: EdgeInsets.all(16.0),
                                 child: Icon(Icons.delete, color: Colors.white),
                               ),
                             ),
@@ -108,7 +109,7 @@ class ProfileScreen extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       // Title for BMI Calculator section
-                      Text(
+                      const Text(
                         'Check Your BMI',
                         style: TextStyle(
                           fontSize: 24,
@@ -116,7 +117,7 @@ class ProfileScreen extends StatelessWidget {
                           color: Color.fromARGB(255, 50, 63, 100),
                         ),
                       ),
-                      SizedBox(height: 8), // Space between title and calculator
+                      const SizedBox(height: 8), // Space between title and calculator
                       BMICalculator(userProfile: userProfile), // Pass the userProfile for BMI calculation
                     ],
                   ),

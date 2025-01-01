@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:test_app/component/button.dart';
-import 'package:test_app/component/result_bmi.dart';
+import 'package:test_app/tools/button.dart';
+import 'package:test_app/tools/result_bmi.dart';
 import 'package:test_app/models/user_profile.dart';
 
 class BMICalculator extends StatefulWidget {
   final UserProfile userProfile;
 
-  const BMICalculator({Key? key, required this.userProfile}) : super(key: key);
+  const BMICalculator({super.key, required this.userProfile});
 
   @override
+  // ignore: library_private_types_in_public_api
   _BMICalculatorState createState() => _BMICalculatorState();
 }
 
@@ -77,7 +78,7 @@ class _BMICalculatorState extends State<BMICalculator> {
         child: Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(12),
-            gradient: LinearGradient(
+            gradient: const LinearGradient(
               colors: [
                 Color.fromARGB(255, 221, 231, 243), // Gradient start color
                 Color.fromARGB(255, 221, 226, 244), // Gradient end color
@@ -89,7 +90,7 @@ class _BMICalculatorState extends State<BMICalculator> {
               BoxShadow(
                 color: const Color.fromARGB(255, 255, 255, 255).withOpacity(0.6), // White shadow with opacity
                 blurRadius: 15.0, // Blur radius
-                offset: Offset(3, 4), // Vertical offset of the shadow
+                offset: const Offset(3, 4), // Vertical offset of the shadow
               ),
             ],
           ),
@@ -105,11 +106,11 @@ class _BMICalculatorState extends State<BMICalculator> {
                     // Height display
                     Column(
                       children: [
-                        Icon(Icons.height, color: Color.fromARGB(255, 68, 72, 84), size: 30),
-                        SizedBox(height: 4),
+                        const Icon(Icons.height, color: Color.fromARGB(255, 68, 72, 84), size: 30),
+                        const SizedBox(height: 4),
                         Text(
                           '${widget.userProfile.height.toStringAsFixed(1)} cm',
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
                             color: Colors.black,
@@ -124,22 +125,22 @@ class _BMICalculatorState extends State<BMICalculator> {
                         ),
                       ],
                     ),
-                    SizedBox(width: 16), // Space between height and weight
+                    const SizedBox(width: 16), // Space between height and weight
                     // Divider line
                     Container(
                       height: 40, // Height of the divider
                       width: 1, // Width of the divider
                       color: Colors.grey[400], // Color of the divider
                     ),
-                    SizedBox(width: 16), // Space between divider and weight
+                    const SizedBox(width: 16), // Space between divider and weight
                     // Weight display
                     Column(
                       children: [
-                        Icon(Icons.fitness_center, color: Color.fromARGB(255, 62, 83, 112), size: 30),
-                        SizedBox(height: 4),
+                        const Icon(Icons.fitness_center, color: Color.fromARGB(255, 62, 83, 112), size: 30),
+                        const SizedBox(height: 4),
                         Text(
                           '${widget.userProfile.weight.toStringAsFixed(1)} kg',
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
                             color: Colors.black,
@@ -156,7 +157,7 @@ class _BMICalculatorState extends State<BMICalculator> {
                     ),
                   ],
                 ),
-                SizedBox(height: 16.0),
+                const SizedBox(height: 16.0),
 
                 // Custom button for BMI calculation
                 Center(
@@ -167,7 +168,7 @@ class _BMICalculatorState extends State<BMICalculator> {
                     textColor: Colors.white,
                   ),
                 ),
-                SizedBox(height: 16.0),
+                const SizedBox(height: 16.0),
 
                 // Display BMI results
                 if (_bmiResult.isNotEmpty)
